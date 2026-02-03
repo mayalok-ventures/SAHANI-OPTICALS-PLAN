@@ -1,1 +1,1230 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahani Opticals - 6 Plans Options</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --premium: #fbbc04;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --border: #dadce0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --without-bg: #f8f9fa;
+            --with-bg: #e8f0fe;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #5f6368;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #4285f4 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .logo i {
+            font-size: 36px;
+        }
+
+        .logo h1 {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .without-photo .section-header {
+            background: var(--without-bg);
+            border-left: 6px solid #5f6368;
+        }
+
+        .with-photo .section-header {
+            background: var(--with-bg);
+            border-left: 6px solid var(--primary);
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #5f6368;
+        }
+
+        /* Plans Container - 3 columns */
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1200px) {
+            .plans-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .plans-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Plan Card */
+        .plan-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .plan-header {
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Without Photography Plans */
+        .plan-basic .plan-header {
+            background: linear-gradient(135deg, #5f6368 0%, #80868b 100%);
+        }
+
+        .plan-standard .plan-header {
+            background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+        }
+
+        .plan-premium .plan-header {
+            background: linear-gradient(135deg, #fbbc04 0%, #f29900 100%);
+        }
+
+        /* With Photography Plans */
+        .with-photo .plan-basic .plan-header {
+            background: linear-gradient(135deg, #0d652d 0%, #34a853 100%);
+        }
+
+        .with-photo .plan-standard .plan-header {
+            background: linear-gradient(135deg, #c62828 0%, #e53935 100%);
+        }
+
+        .with-photo .plan-premium .plan-header {
+            background: linear-gradient(135deg, #6a1b9a 0%, #9c27b0 100%);
+        }
+
+        .plan-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .plan-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .plan-price {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .plan-period {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .recommended-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(52, 168, 83, 0.3);
+            z-index: 10;
+        }
+
+        /* Plan Features */
+        .plan-features {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            margin-right: 10px;
+            font-size: 16px;
+            min-width: 20px;
+            margin-top: 2px;
+        }
+
+        .feature-icon.check {
+            color: var(--secondary);
+        }
+
+        .feature-icon.times {
+            color: #ea4335;
+        }
+
+        .feature-text {
+            font-size: 14px;
+        }
+
+        .feature-text strong {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Photography Note */
+        .photography-note {
+            background: #f0f7ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .photography-note h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .with-photo .photography-note {
+            background: #e8f5e9;
+            border-left-color: var(--secondary);
+        }
+
+        .with-photo .photography-note h4 {
+            color: var(--secondary);
+        }
+
+        /* Button */
+        .plan-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            margin-top: auto;
+        }
+
+        .plan-button:hover {
+            background: #0d62d9;
+        }
+
+        .without-photo .plan-button {
+            background: #5f6368;
+        }
+
+        .without-photo .plan-button:hover {
+            background: #4a4d50;
+        }
+
+        .with-photo .plan-button {
+            background: var(--secondary);
+        }
+
+        .with-photo .plan-button:hover {
+            background: #2e7d32;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin: 60px 0;
+            overflow-x: auto;
+        }
+
+        .comparison-section h3 {
+            text-align: center;
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .feature-category {
+            font-weight: 600;
+            color: var(--dark);
+            background: #f1f3f4;
+        }
+
+        /* NEW: Why Choose Us Section */
+        .why-choose-us {
+            background: white;
+            border-radius: 12px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            margin: 60px 0;
+        }
+
+        .why-choose-us h3 {
+            text-align: center;
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 40px;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .reason-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .reason-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .reason-card h4 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            font-size: 16px;
+            color: #5f6368;
+        }
+
+        .value-proposition {
+            background: linear-gradient(135deg, #e8f0fe 0%, #f0f7ff 100%);
+            border-left: 6px solid var(--primary);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .value-proposition h4 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .value-points {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .value-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .value-point i {
+            color: var(--secondary);
+            font-size: 24px;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 992px) {
+            .reasons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .value-points {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #4285f4 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .footer-contact {
+            text-align: right;
+        }
+
+        .footer-contact p {
+            margin-bottom: 5px;
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-contact {
+                text-align: center;
+            }
+
+            .comparison-section {
+                padding: 20px;
+            }
+            
+            .why-choose-us {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-glasses"></i>
+                <h1>Sahani Opticals</h1>
+            </div>
+            <p class="tagline">6 Digital Solutions - Choose With or Without Photography Service</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- WITHOUT PHOTOGRAPHY SECTION -->
+        <div class="without-photo">
+            <div class="section-header">
+                <h2><i class="fas fa-times-circle"></i> Plans WITHOUT Photography</h2>
+                <p>You provide all product photos. We only develop the website.</p>
+            </div>
+
+            <div class="plans-container">
+                <!-- Plan 1: Basic Without -->
+                <div class="plan-card plan-basic">
+                    <div class="plan-header">
+                        <div class="plan-title">Basic Website</div>
+                        <div class="plan-subtitle">Catalog Only - No E-commerce</div>
+                        <div class="plan-price">?15,000</div>
+                        <div class="plan-period">One-time payment</div>
+                        <div class="plan-badge">No Photography</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>5-7 Page Website</strong> - Responsive design
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Product Gallery</strong> - Display your frames
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Contact & Location</strong> - Google Maps
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>Photography Service</strong> - You provide photos
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>E-commerce Features</strong> - No cart system
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>Admin Dashboard</strong> - Basic updates only
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="photography-note">
+                            <h4><i class="fas fa-camera-slash"></i> Photography Note</h4>
+                            <p>You need to provide all product photos (minimum 50 FRAMES required).</p>
+                        </div>
+                        <a href="#contact" class="plan-button">Select This Plan</a>
+                    </div>
+                </div>
+
+                <!-- Plan 2: Standard Without -->
+                <div class="plan-card plan-standard">
+                    <div class="plan-header">
+                        <div class="plan-title">Standard E-commerce</div>
+                        <div class="plan-subtitle">Full Online Store</div>
+                        <div class="plan-price">?28,000</div>
+                        <div class="plan-period">One-time payment</div>
+                        <div class="plan-badge">No Photography</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Complete E-commerce</strong> - Cart & checkout
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Lens Logic System</strong> - Frame + Lens selection
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Payment Gateway</strong> - UPI, Cards, Net Banking
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>Photography Service</strong> - You provide photos
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Admin Dashboard</strong> - Manage orders & stock
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Mobile Management</strong> - Control from phone
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="photography-note">
+                            <h4><i class="fas fa-camera-slash"></i> Photography Note</h4>
+                            <p>You need to provide all product photos (minimum 100 FRAMES recommended).</p>
+                        </div>
+                        <a href="#contact" class="plan-button">Select This Plan</a>
+                    </div>
+                </div>
+
+                <!-- Plan 3: Premium Without -->
+                <div class="plan-card plan-premium">
+                    <div class="plan-header">
+                        <div class="plan-title">Premium Automation</div>
+                        <div class="plan-subtitle">Advanced Features</div>
+                        <div class="plan-price">?45,000</div>
+                        <div class="plan-period">One-time payment</div>
+                        <div class="plan-badge">No Photography</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>All Standard Features</strong> - Plus advanced
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Virtual Try-On</strong> - AR frame preview
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Loyalty System</strong> - Points & rewards
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>Photography Service</strong> - You provide photos
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Advanced Analytics</strong> - Sales reports
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Priority Support</strong> - 6 months included
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="photography-note">
+                            <h4><i class="fas fa-camera-slash"></i> Photography Note</h4>
+                            <p>You need to provide all product photos (minimum 200+ FRAMES recommended).</p>
+                        </div>
+                        <a href="#contact" class="plan-button">Select This Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WITH PHOTOGRAPHY SECTION -->
+        <div class="with-photo">
+            <div class="section-header">
+                <h2><i class="fas fa-camera"></i> Plans WITH Photography</h2>
+                <p>We handle photography, editing, and uploading. Complete package.</p>
+            </div>
+
+            <div class="plans-container">
+                <!-- Plan 1: Basic With -->
+                <div class="plan-card plan-basic">
+                    <div class="plan-header">
+                        <div class="plan-title">Basic + Photography</div>
+                        <div class="plan-subtitle">Catalog + 50 FRAMES</div>
+                        <div class="plan-price">?25,000</div>
+                        <div class="plan-period">One-time payment</div>
+                        <div class="plan-badge">50 FRAMES Included</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>5-7 Page Website</strong> - Responsive design
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>50 FRAMES Photography</strong> - We shoot & edit
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Professional Editing</strong> - Background removal
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Complete Upload</strong> - We upload all photos
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>E-commerce Features</strong> - No cart system
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-times feature-icon times"></i>
+                                <div class="feature-text">
+                                    <strong>Admin Dashboard</strong> - Basic updates only
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="photography-note">
+                            <h4><i class="fas fa-camera"></i> Photography Service</h4>
+                            <p>We professionally photograph, edit, and upload 50 FRAMES. Value: ?4,000</p>
+                        </div>
+                        <a href="#contact" class="plan-button">Select This Plan</a>
+                    </div>
+                </div>
+
+                <!-- Plan 2: Standard With -->
+                <div class="plan-card plan-standard">
+                    <div class="plan-header">
+                        <div class="plan-title">Standard + Photography</div>
+                        <div class="plan-subtitle">E-commerce + 100 FRAMES</div>
+                        <div class="plan-price">?38,000</div>
+                        <div class="plan-period">One-time payment</div>
+                        <div class="plan-badge">100 FRAMES Included</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Complete E-commerce</strong> - Cart & checkout
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>100 FRAMES Photography</strong> - We shoot & edit
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Lens Logic System</strong> - Frame + Lens selection
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Payment Gateway</strong> - UPI, Cards, Net Banking
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Admin Dashboard</strong> - Manage orders & stock
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Mobile Management</strong> - Control from phone
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="photography-note">
+                            <h4><i class="fas fa-camera"></i> Photography Service</h4>
+                            <p>We professionally photograph, edit, and upload 100 FRAMES. Value: ?10,000</p>
+                        </div>
+                        <a href="#contact" class="plan-button">Select This Plan</a>
+                    </div>
+                </div>
+
+                <!-- Plan 3: Premium With -->
+                <div class="plan-card plan-premium">
+                    <div class="plan-header">
+                        <div class="plan-title">Premium + Photography</div>
+                        <div class="plan-subtitle">Complete Package</div>
+                        <div class="plan-price">?65,000</div>
+                        <div class="plan-period">One-time payment</div>
+                        <div class="plan-badge">200+ FRAMES Included</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>All Standard Features</strong> - Plus advanced
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>200+ FRAMES Photography</strong> - Complete inventory
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Virtual Try-On</strong> - AR frame preview
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Loyalty System</strong> - Points & rewards
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Advanced Analytics</strong> - Sales reports
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-check feature-icon check"></i>
+                                <div class="feature-text">
+                                    <strong>Priority Support</strong> - 6 months included
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="photography-note">
+                            <h4><i class="fas fa-camera"></i> Complete Photography Service</h4>
+                            <p>We photograph, edit, and upload 200+ FRAMES. Value: ?20,000</p>
+                        </div>
+                        <a href="#contact" class="plan-button">Select This Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-section">
+            <h3>Quick Comparison: With vs Without Photography</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Basic (Without)</th>
+                        <th>Basic (With)</th>
+                        <th>Standard (Without)</th>
+                        <th>Standard (With)</th>
+                        <th>Premium (Without)</th>
+                        <th>Premium (With)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-category">Price</td>
+                        <td>?15,000</td>
+                        <td>?25,000</td>
+                        <td>?28,000</td>
+                        <td>?38,000</td>
+                        <td>?45,000</td>
+                        <td>?65,000</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-category">Photography</td>
+                        <td>? You provide</td>
+                        <td>? 50 FRAMES</td>
+                        <td>? You provide</td>
+                        <td>? 100 FRAMES</td>
+                        <td>? You provide</td>
+                        <td>? 200+ FRAMES</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-category">Website Type</td>
+                        <td>Catalog</td>
+                        <td>Catalog</td>
+                        <td>E-commerce</td>
+                        <td>E-commerce</td>
+                        <td>Advanced</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-category">Lens Logic</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-category">Payment Gateway</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-category">Admin Panel</td>
+                        <td>Basic</td>
+                        <td>Basic</td>
+                        <td>Full</td>
+                        <td>Full</td>
+                        <td>Advanced</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-category">Best For</td>
+                        <td>Display only</td>
+                        <td>Display + Photos</td>
+                        <td>Sales focused</td>
+                        <td>Complete solution</td>
+                        <td>Automation</td>
+                        <td>Premium brand</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NEW: Why Choose Us Section -->
+        <div class="why-choose-us">
+            <h3>Why 90% of Optical Stores Choose Our Standard + Photography Plan?</h3>
+            
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h4>Photography at 50% Discount</h4>
+                    <p>Market rate: ?200/frame. We charge only ?100/frame. 100 frames = ?10,000 value for ?10,000 extra only!</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h4>Time Saving = Money Saving</h4>
+                    <p>You save 50+ hours of photography, editing, and uploading. Focus on your store while we handle digital setup.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h4>Lifetime Free Hosting</h4>
+                    <p>Other agencies charge ?2,000/month. We give FREE lifetime hosting. Save ?24,000/year forever!</p>
+                </div>
+            </div>
+            
+            <div class="value-proposition">
+                <h4><i class="fas fa-lightbulb"></i> The Hidden Value You Get (That Others Don't Offer)</h4>
+                <div class="value-points">
+                    <div class="value-point">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Industry-Specific Solution</strong>
+                            <p>Our "Lens Logic" system is built ONLY for optical stores. Generic developers can't build this.</p>
+                        </div>
+                    </div>
+                    <div class="value-point">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>No Monthly Bills Trap</strong>
+                            <p>Others quote ?25,000 then add ?2,000/month. Our ?38,000 is ALL-INCLUSIVE with zero hidden costs.</p>
+                        </div>
+                    </div>
+                    <div class="value-point">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Photography Quality Guarantee</strong>
+                            <p>We use professional equipment and editing. Your mobile photos won't match our quality for online sales.</p>
+                        </div>
+                    </div>
+                    <div class="value-point">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>24/7 Salesman Without Salary</strong>
+                            <p>Website works 365 days. Costs ?100/day for first year, then FREE. A salesman costs ?10,000/month.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Real Cost Comparison -->
+            <div style="margin-top: 40px; padding: 25px; background: #fff8e1; border-radius: 10px; border-left: 6px solid #ff9800;">
+                <h4 style="color: #ff9800; margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> What Happens If You Go Elsewhere?</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="padding: 15px; background: white; border-radius: 8px;">
+                        <h5 style="color: #d32f2f; margin-bottom: 10px;">Other Agency Costs:</h5>
+                        <ul style="list-style: none; color: #5f6368;">
+                            <li style="padding: 8px 0; border-bottom: 1px dashed #eee;">Website: ?25,000</li>
+                            <li style="padding: 8px 0; border-bottom: 1px dashed #eee;">Photography: ?20,000 (100 frames)</li>
+                            <li style="padding: 8px 0; border-bottom: 1px dashed #eee;">Hosting: ?2,000/month = ?24,000/year</li>
+                            <li style="padding: 8px 0; font-weight: bold; color: #d32f2f;">First Year Total: ?69,000+</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px;">
+                        <h5 style="color: #388e3c; margin-bottom: 10px;">Our Package Cost:</h5>
+                        <ul style="list-style: none; color: #5f6368;">
+                            <li style="padding: 8px 0; border-bottom: 1px dashed #eee;">Website + Photography: ?38,000</li>
+                            <li style="padding: 8px 0; border-bottom: 1px dashed #eee;">Hosting: ?0/month = FREE forever</li>
+                            <li style="padding: 8px 0; border-bottom: 1px dashed #eee;">Lens Logic System: INCLUDED</li>
+                            <li style="padding: 8px 0; font-weight: bold; color: #388e3c;">First Year Total: ?38,000 ONLY</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: #5f6368; font-style: italic; text-align: center;">
+                    <i class="fas fa-calculator"></i> <strong>You save ?31,000 in first year alone!</strong> That's 45% cheaper than market rate.
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section" id="contact">
+            <h3>The Math is Clear: You Can't Afford to Say No</h3>
+            <p>Every day without a proper website, you're losing customers to competitors. Your ?38,000 investment will pay back in just <strong>15-20 frame sales</strong>. That's less than 1 month of business!</p>
+            <p style="margin: 20px 0; font-size: 20px; opacity: 1;">
+                <i class="fas fa-bolt"></i> <strong>Special Offer:</strong> First 3 clients get 5 promotional banners FREE (Worth ?3,000)
+            </p>
+            <a href="tel:+919719364834" class="cta-button">
+                <i class="fas fa-phone-alt"></i> Call Now: +91 97193 64834
+            </a>
+            <p style="margin-top: 30px; font-size: 16px; opacity: 0.8;">
+                <i class="fas fa-clock"></i> Limited slots available. Next available photography date: March 10, 2026
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Sahani Opticals - 6 Plan Options</div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-user"></i> Prepared by: Kunal Pratap Singh</p>
+                    <p><i class="fas fa-calendar"></i> Proposal Date: February 2026</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Sahani Opticals Digital Proposal. All pricing includes GST.<br>
+                <small style="opacity: 0.6;">Note: Photography rates are 50% below market. We specialize in optical store digitization since 2020.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Plan button click handler
+        document.querySelectorAll('.plan-button').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const planName = this.closest('.plan-card').querySelector('.plan-title').textContent;
+                const planPrice = this.closest('.plan-card').querySelector('.plan-price').textContent;
+                const section = this.closest('.with-photo') ? 'WITH Photography' : 'WITHOUT Photography';
+                const frames = this.closest('.plan-card').querySelector('.plan-badge').textContent;
+
+                alert(`Thank you for selecting:\n${planName} (${planPrice})\n${frames}\nSection: ${section}\n\nWe'll contact you within 1 hour to discuss photography schedule and requirements.`);
+
+                // Scroll to contact section
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Simple animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to all plan cards and reason cards
+        document.querySelectorAll('.plan-card, .reason-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // Special countdown timer for offer
+        function updateOfferTimer() {
+            const now = new Date();
+            const target = new Date('2026-03-10T23:59:59');
+            const diff = target - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                
+                const timerElement = document.createElement('div');
+                timerElement.innerHTML = `<p style="margin-top: 15px; color: #fff; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px;">
+                    <i class="fas fa-hourglass-half"></i> <strong>Limited Time Offer:</strong> ${days} days ${hours} hours remaining for FREE banners
+                </p>`;
+                
+                const ctaSection = document.querySelector('.cta-section');
+                ctaSection.insertBefore(timerElement, ctaSection.querySelector('.cta-button'));
+            }
+        }
+        
+        // Uncomment to enable timer
+        // updateOfferTimer();
+    </script>
+</body>
+
+</html>
